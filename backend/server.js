@@ -13,7 +13,12 @@ dotenv.config();
 const app = express();
 // middleware to convert response to json
 app.use(express.json());
+// set up cors 
+app.use(cors({
+  origin: "http://localhost:5173"
+}))
 app.use('/api/jobs', jobRoutes)
+
 // grab the port from .env
 const PORT = process.env.PORT;
 
