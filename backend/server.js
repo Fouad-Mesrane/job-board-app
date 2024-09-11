@@ -13,7 +13,7 @@ dotenv.config();
 const app = express();
 // middleware to convert response to json
 app.use(express.json());
-app.use('/jobs', jobRoutes)
+app.use('/api/jobs', jobRoutes)
 // grab the port from .env
 const PORT = process.env.PORT;
 
@@ -23,10 +23,7 @@ const PORT = process.env.PORT;
 
 //connect to DB
 mongoose
-  .connect(process.env.MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
+  .connect(process.env.MONGO_URI)
   .then(() => {
     app.listen(PORT, () => {
         console.log("Connected to DB && listening on port:", PORT);
@@ -34,4 +31,8 @@ mongoose
   })
   .catch((e) => console.log(e));
 
+  
+
+
+  
 
